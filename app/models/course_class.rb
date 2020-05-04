@@ -1,3 +1,10 @@
 class CourseClass < ApplicationRecord
-	belongs_to :course
+  enum status: {
+    DRAFT: 'DRAFT',
+    OPEN: 'OPEN',
+    HOLD: 'HOLD',
+    CLOSED: 'CLOSED'
+  }
+
+  belongs_to :course
 end

@@ -18,6 +18,10 @@ rooms = Room.create [
 semester = Semester.create name: 'First Semester 2020-2021'
 
 course_classes = CourseClass.create [
-  {code: '69923', max_enrollment: 25, course_id: courses[0].id, room_id: rooms[0].id, semester_id: semester.id},
-  {code: '68078', max_enrollment: 25, course_id: courses[0].id, room_id: rooms[1].id, semester_id: semester.id},
+  {code: '69923', max_enrollment: 25, course_id: courses[0].id,
+  room_id: rooms[0].id, semester_id: semester.id, status: :open},
+  {code: '68078', max_enrollment: 25, course_id: courses[0].id,
+  room_id: rooms[1].id, semester_id: semester.id, status: :open},
 ]
+
+pp course_classes[0].status

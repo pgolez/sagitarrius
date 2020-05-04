@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(version: 2020_05_04_101153) do
   enable_extension "plpgsql"
 
   create_table "course_classes", force: :cascade do |t|
-    t.string "code"
+    t.string "code", null: false
     t.integer "max_enrollment", default: 0, null: false
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "course_id", null: false

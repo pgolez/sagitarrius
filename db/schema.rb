@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_05_04_055631) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "course_classes", force: :cascade do |t|
     t.integer "max_enrollment", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "course_id"
+    t.bigint "course_id"
     t.index ["course_id"], name: "index_course_classes_on_course_id"
   end
 

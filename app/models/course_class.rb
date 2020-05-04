@@ -7,4 +7,6 @@ class CourseClass < ApplicationRecord
   }
 
   belongs_to :course
+  belongs_to :room
+  belongs_to :semester
 end

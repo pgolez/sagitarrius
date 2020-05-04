@@ -16,17 +16,18 @@ ActiveRecord::Schema.define(version: 2020_05_04_055631) do
   enable_extension "plpgsql"
 
   create_table "course_classes", force: :cascade do |t|
+    t.string "code"
     t.integer "max_enrollment", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "course_id"
+    t.bigint "course_id", null: false
     t.index ["course_id"], name: "index_course_classes_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "code"
+    t.string "code", null: false
     t.string "descriptive_title", limit: 255
-    t.integer "units"
+    t.integer "units", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

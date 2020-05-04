@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+forensics_lab:
+  name: 'Forensics Laboratory'
 
 two:
-  name: MyString
+  name: 'Computer Laboratory'

@@ -10,7 +10,12 @@ courses = Course.create [
   {code: 'IT-111', descriptive_title: 'Program Logic Design', units: 4}
 ]
 
+rooms = Room.create [
+  {name: 'Computer Laboratory 702'},
+  {name: 'Computer Laboratory 703'},
+]
+
 course_classes = CourseClass.create [
-  {code: '69923', max_enrollment: 25, course_id: courses[0].id},
-  {code: '68078', max_enrollment: 25, course_id: courses[0].id},
+  {code: '69923', max_enrollment: 25, course_id: courses[0].id, room_id: rooms[0].id},
+  {code: '68078', max_enrollment: 25, course_id: courses[0].id, room_id: rooms[1].id},
 ]

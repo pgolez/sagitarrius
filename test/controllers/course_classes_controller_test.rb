@@ -18,9 +18,31 @@ class CourseClassesControllerTest < ActionDispatch::IntegrationTest
     assert_course_class_json_structure(@response.parsed_body)
   end
 
+  test "should create new course class" do
+    post "/course-classes",
+      params: {
+        course_class: {
+          "code": "518332",
+          "max_enrollment": 25,
+          "course_id": courses(:it_110).id,
+          "room_id": rooms(:computer_lab_1).id,
+          "semester_id": semesters(:first_semester_2020_2021).id
+        }
+      }
+
+    assert_response :created
+  end
+
   private
 
   def get(path, **args)
+    args[:headers] = {} unless args.has_key? :headers
+    args[:headers][:accept] = 'application/json' if args[:headers][:accept].nil?
+
+    super(path, args)
+  end
+
+  def post(path, **args)
     args[:headers] = {} unless args.has_key? :headers
     args[:headers][:accept] = 'application/json' if args[:headers][:accept].nil?
 

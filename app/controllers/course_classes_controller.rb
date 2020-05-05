@@ -12,6 +12,7 @@ class CourseClassesController < ApplicationController
 		@course_class = CourseClass.new create_course_class_params
 		@course_class.DRAFT!
 		@course_class.save
+		render status: :created
 	end
 
 	def update

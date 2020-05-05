@@ -4,8 +4,10 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# one: {}
-# # column: value
-# #
-# two: {}
-# # column: value
+course_632258:
+  code: '632258'
+  max_enrollment: 40
+  status: 'OPEN'
+  course: it_110
+  room: computer_lab_1
+  semester: first_semester_2020_2021

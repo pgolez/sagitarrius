@@ -3,5 +3,5 @@
 forensics_lab:
   name: 'Forensics Laboratory'
 
-two:
-  name: 'Computer Laboratory'
+computer_lab_1:
+  name: 'Computer Laboratory 1'

@@ -11,3 +11,11 @@ course_632258:
   course: it_110
   room: computer_lab_1
   semester: first_semester_2020_2021
+
+course_622078:
+  code: '622078'
+  max_enrollment: 25
+  status: 'DRAFT'
+  course: it_111
+  room: computer_lab_1
+  semester: first_semester_2020_2021

@@ -33,6 +33,23 @@ class CourseClassesControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
+  test "should update existing course class" do
+    id = course_classes(:course_632258).id
+    put "/course-classes/#{id}",
+      params: {
+        course_class: {
+          "max_enrollment": 40,
+          "course_id": courses(:it_111).id,
+          "room_id": rooms(:forensics_lab).id,
+          "semester_id": semesters(:first_semester_2020_2021).id,
+          "status": "DRAFT"
+        }
+      }
+
+    assert_response :success
+    assert_course_class_json_structure(@response.parsed_body)
+  end
+
   private
 
   def get(path, **args)
@@ -43,6 +60,13 @@ class CourseClassesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def post(path, **args)
+    args[:headers] = {} unless args.has_key? :headers
+    args[:headers][:accept] = 'application/json' if args[:headers][:accept].nil?
+
+    super(path, args)
+  end
+
+  def put(path, **args)
     args[:headers] = {} unless args.has_key? :headers
     args[:headers][:accept] = 'application/json' if args[:headers][:accept].nil?
 

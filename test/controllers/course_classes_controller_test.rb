@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CourseClassesControllerTest < ActionDispatch::IntegrationTest
   test "should list all classes" do
-    get '/course-classes', headers: {'accept': 'application/json'}
+    get '/course-classes'
 
     assert_response :success
     assert_instance_of(Array, @response.parsed_body)
@@ -12,13 +12,20 @@ class CourseClassesControllerTest < ActionDispatch::IntegrationTest
 
   test "should show specific class" do
     id = course_classes(:course_632258).id
-    get "/course-classes/#{id}", headers: {'accept': 'application/json'}, params: {id: 1}
+    get "/course-classes/#{id}"
 
     assert_response :success
     assert_course_class_json_structure(@response.parsed_body)
   end
 
   private
+
+  def get(path, **args)
+    args[:headers] = {} unless args.has_key? :headers
+    args[:headers][:accept] = 'application/json' if args[:headers][:accept].nil?
+
+    super(path, args)
+  end
 
   def assert_course_class_list_json_structure (course_classes)
     course_classes.each do |course_class|

@@ -16,7 +16,7 @@ class CourseClassesController < ApplicationController
 
 	def update
 		@course_class = CourseClass.find(params[:id])
-		@course_class.update! update_course_class_params
+		CourseClassManager::Updater.process(@course_class, update_course_class_params)
 	end
 
 	private

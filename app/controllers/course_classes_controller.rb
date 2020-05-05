@@ -9,9 +9,7 @@ class CourseClassesController < ApplicationController
 	end
 
 	def create
-		@course_class = CourseClass.new create_course_class_params
-		@course_class.DRAFT!
-		@course_class.save
+		@course_class = CourseClassManager::Creator.process(create_course_class_params)
 		render status: :created
 	end
 

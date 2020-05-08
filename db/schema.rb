@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_101153) do
+ActiveRecord::Schema.define(version: 2020_05_08_072516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_101153) do
     t.bigint "course_id", null: false
     t.bigint "room_id", null: false
     t.bigint "semester_id", null: false
+    t.bigint "schedule_id"
     t.index ["course_id"], name: "index_course_classes_on_course_id"
     t.index ["room_id"], name: "index_course_classes_on_room_id"
+    t.index ["schedule_id"], name: "index_course_classes_on_schedule_id"
     t.index ["semester_id"], name: "index_course_classes_on_semester_id"
   end
 
@@ -43,6 +45,20 @@ ActiveRecord::Schema.define(version: 2020_05_04_101153) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.boolean "monday", default: false
+    t.boolean "tuesday", default: false
+    t.boolean "wednesday", default: false
+    t.boolean "thurdady", default: false
+    t.boolean "friday", default: false
+    t.boolean "saturday", default: false
+    t.boolean "sunday", default: false
+    t.integer "time_start", null: false
+    t.integer "time_end", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "semesters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -51,5 +67,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_101153) do
 
   add_foreign_key "course_classes", "courses"
   add_foreign_key "course_classes", "rooms"
+  add_foreign_key "course_classes", "schedules"
   add_foreign_key "course_classes", "semesters"
 end

@@ -20,7 +20,7 @@ semester = Semester.create name: 'First Semester 2020-2021'
 schedules = Schedule.create [
   {monday: true, wednesday: true, friday: true, time_start: 10*60 + 30, time_end: 11*60 + 30},
   {monday: true, wednesday: true, friday: true, time_start: 14*60 + 30, time_end: 15*60 + 30},
-  {tuesday: true, thursday: true, time_start: 13*60 + 30, time_end: 15*30},
+  {tuesday: true, thursday: true, time_start: 13*60 + 30, time_end: 15*60},
   {saturday: true, time_start: 16*60 + 30 ,time_end: 19*60}
 ]
 

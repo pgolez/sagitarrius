@@ -17,11 +17,16 @@ rooms = Room.create [
 
 semester = Semester.create name: 'First Semester 2020-2021'
 
-course_classes = CourseClass.create [
-  {code: '69923', max_enrollment: 25, course_id: courses[0].id,
-  room_id: rooms[0].id, semester_id: semester.id, status: :OPEN},
-  {code: '68078', max_enrollment: 25, course_id: courses[0].id,
-  room_id: rooms[1].id, semester_id: semester.id, status: :OPEN},
+schedules = Schedule.create [
+  {monday: true, wednesday: true, friday: true, time_start: 10*60 + 30, time_end: 11*60 + 30},
+  {monday: true, wednesday: true, friday: true, time_start: 14*60 + 30, time_end: 15*60 + 30},
+  {tuesday: true, thursday: true, time_start: 13*60 + 30, time_end: 15*30},
+  {saturday: true, time_start: 16*60 + 30 ,time_end: 19*60}
 ]
 
-pp course_classes[0].status
+course_classes = CourseClass.create [
+  {code: '69923', max_enrollment: 25, course_id: courses[0].id, schedule_id: schedules[1].id,
+  room_id: rooms[0].id, semester_id: semester.id, status: :OPEN},
+  {code: '68078', max_enrollment: 25, course_id: courses[0].id, schedule_id: schedules[3].id,
+  room_id: rooms[1].id, semester_id: semester.id, status: :OPEN},
+]

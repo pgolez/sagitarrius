@@ -22,12 +22,12 @@ class CourseClassesController < ApplicationController
 
 	def create_course_class_params
 		params.require(:course_class)
-			.permit(:code, :max_enrollment, :course_id, :room_id, :semester_id)
+			.permit(:code, :max_enrollment, :course_id, :room_id, :semester_id, :schedule_id)
 	end
 
 	def update_course_class_params
 		params.require(:course_class)
-			.permit(:id, :max_enrollment, :course_id, :room_id, :semester_id, :status)
+			.permit(:id, :max_enrollment, :course_id, :room_id, :semester_id, :status, :schedule_id)
 	end
 
 end

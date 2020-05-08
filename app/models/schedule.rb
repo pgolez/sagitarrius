@@ -23,6 +23,6 @@ class Schedule < ApplicationRecord
 
   def extract_time_string attribute_name
     time_value = @attributes[attribute_name].value
-    "#{time_value/60}:#{time_value%60}"
+    "#{'%02.0f' % (time_value / 60)}:#{'%02.0f' % (time_value % 60)}"
   end
 end
